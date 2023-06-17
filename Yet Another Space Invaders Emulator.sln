@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33027.164
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Yet Another Space Invaders Emulator", "Yet Another Space Invaders Emulator.vcxproj", "{F7BA1F96-B76E-47F8-B2BD-85ED29C42E2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7BA1F96-B76E-47F8-B2BD-85ED29C42E2D}.Debug|x64.ActiveCfg = Debug|x64
+		{F7BA1F96-B76E-47F8-B2BD-85ED29C42E2D}.Debug|x64.Build.0 = Debug|x64
+		{F7BA1F96-B76E-47F8-B2BD-85ED29C42E2D}.Debug|x86.ActiveCfg = Debug|Win32
+		{F7BA1F96-B76E-47F8-B2BD-85ED29C42E2D}.Debug|x86.Build.0 = Debug|Win32
+		{F7BA1F96-B76E-47F8-B2BD-85ED29C42E2D}.Release|x64.ActiveCfg = Release|x64
+		{F7BA1F96-B76E-47F8-B2BD-85ED29C42E2D}.Release|x64.Build.0 = Release|x64
+		{F7BA1F96-B76E-47F8-B2BD-85ED29C42E2D}.Release|x86.ActiveCfg = Release|Win32
+		{F7BA1F96-B76E-47F8-B2BD-85ED29C42E2D}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {947516A7-48E1-42A2-95A5-EE322B6A7CFF}
+	EndGlobalSection
+EndGlobal
