@@ -15,6 +15,14 @@ const int FRAME_BUFFER = 7168;
 
 const SDL_Rect FRAME{(SCREEN_WIDTH - SCREEN_HEIGHT), (SCREEN_HEIGHT - SCREEN_WIDTH), SCREEN_HEIGHT * 2, SCREEN_WIDTH * 2};
 
+uint8_t reverse_bits(uint8_t data)
+{
+    data = (data << 1 & 0x10) | (data >> 1 & 0x08) | (data & 0xE7);
+    data = (data << 3 & 0x20) | (data >> 3 & 0x04) | (data & 0xDB);
+    data = (data << 5 & 0x40) | (data >> 5 & 0x02) | (data & 0xBD);
+    data = (data << 7 & 0x80) | (data >> 7 & 0x01) | (data & 0x7e);
+    return data;
+}
 
 int main(int argc, char* argv[])
 {
@@ -30,6 +38,11 @@ int main(int argc, char* argv[])
     SDL_Surface* screen = nullptr;
     bool SDL_failed = false;
 
+    //uint8_t* bytes = reinterpret_cast<uint8_t*>(buffer);
+    //for (int i = 0; i < FRAME_BUFFER; ++i) {
+    //    bytes[i] = reverse_bits(bytes[i]);
+    //}
+
     try {
         //Initialize SDL
         if (SDL_failed = SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -43,7 +56,7 @@ int main(int argc, char* argv[])
         dot_renderer = SDL_CreateRenderer(reference_window, -1, SDL_RENDERER_ACCELERATED);
         tex_renderer = SDL_CreateRenderer(texture_window, -1, SDL_RENDERER_ACCELERATED);
 
-        screen = SDL_CreateRGBSurfaceWithFormatFrom(buffer, SCREEN_HEIGHT, SCREEN_WIDTH, 1, SCREEN_HEIGHT / 8, SDL_PIXELFORMAT_INDEX1LSB);
+        screen = SDL_CreateRGBSurfaceWithFormatFrom(buffer, SCREEN_HEIGHT, SCREEN_WIDTH, 1, SCREEN_HEIGHT / 8, SDL_PIXELFORMAT_INDEX1SB);
         swap(screen->format->palette->colors[0], screen->format->palette->colors[1]);
 
         SDL_Surface* win = SDL_GetWindowSurface(surface_window);
@@ -88,7 +101,7 @@ int main(int argc, char* argv[])
 
             SDL_RenderClear(tex_renderer);
             SDL_Texture* pixels = SDL_CreateTextureFromSurface(tex_renderer, screen);
-            SDL_RenderCopyEx(tex_renderer, pixels, nullptr, &FRAME, 90, nullptr, SDL_FLIP_NONE);
+            SDL_RenderCopyEx(tex_renderer, pixels, nullptr, &FRAME, -90, nullptr, SDL_FLIP_NONE);
             SDL_DestroyTexture(pixels);
             SDL_RenderPresent(tex_renderer);
         }
